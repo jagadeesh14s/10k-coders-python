@@ -7,6 +7,7 @@ def pyramid(height):
 height=int(input("Enter the height of the pyramid: "))
 pyramid(height)
 
+
 output:
 Enter the height of the pyramid: 5
     * 
@@ -26,6 +27,7 @@ text = "abcxyzabcrgabc"
 pattern = "abc"
 print("Occurrences:", count_pattern(text, pattern))
 
+
 output:
 Occurrences: 3
 
@@ -40,6 +42,7 @@ def checkerboard(size):
                 res += "O "
         print(res)
 checkerboard(5)
+
 
 output:
 X O X O X

@@ -1,63 +1,67 @@
 class DictionaryManager:
     def __init__(self):
-        """Create an empty dictionary"""
-        self.data = {}
+        # Create an empty dictionary
+        self.dictionary = {}
 
-    def add_item(self, key, value):
+    def create_dictionary(self):
+        """Create and return an empty dictionary"""
+        self.dictionary = {}
+        return self.dictionary
+
+    def add_key_value(self, key, value):
         """Add a new key-value pair"""
-        self.data[key] = value
-        print(f"Added: {key} -> {value}")
+        self.dictionary[key] = value
 
-    def remove_item(self, key):
+    def remove_key_value(self, key):
         """Remove a key-value pair"""
-        if key in self.data:
-            del self.data[key]
-            print(f"Removed key: {key}")
-        else:
-            print(f"Key '{key}' not found.")
+        return self.dictionary.pop(key, "Key not found")
 
-    def update_item(self, key, value):
+    def update_value(self, key, value):
         """Update the value of an existing key"""
-        if key in self.data:
-            self.data[key] = value
-            print(f"Updated: {key} -> {value}")
-        else:
-            print(f"Key '{key}' not found.")
+        if key in self.dictionary:
+            self.dictionary.update({key: value})
+            return True
+        return False
 
     def get_value(self, key):
         """Retrieve the value associated with a given key"""
-        return self.data.get(key, "Key not found")
-
-    def display(self):
-        """Display the dictionary"""
-        print("Current Dictionary:", self.data)
+        return self.dictionary.get(key, "Key not found")
 
 
 def main():
     # Create DictionaryManager object
     manager = DictionaryManager()
 
-    print("----- Dictionary Operations -----")
+    # Example use case: Create an empty dictionary
+    print("Empty Dictionary:")
+    print(manager.create_dictionary())
 
-    # Add key-value pairs
-    manager.add_item("name", "Jagadeesh")
-    manager.add_item("age", 22)
-    manager.add_item("course", "AI & ML")
-    manager.display()
+    # Example use case: Add key-value pairs
+    manager.add_key_value("name", "Jagadeesh")
+    manager.add_key_value("age", 22)
+    manager.add_key_value("course", "AI & ML")
 
-    # Retrieve value
-    print("\nValue for key 'name':", manager.get_value("name"))
+    print("\nDictionary after adding items:")
+    print(manager.dictionary)
 
-    # Update existing key
-    manager.update_item("age", 23)
-    manager.display()
+    # Example use case: Retrieve a value
+    print("\nValue for key 'name':")
+    print(manager.get_value("name"))
 
-    # Remove key-value pair
-    manager.remove_item("course")
-    manager.display()
+    # Example use case: Update a value
+    manager.update_value("age", 23)
 
-    # Try retrieving a removed key
-    print("\nValue for key 'course':", manager.get_value("course"))
+    print("\nDictionary after updating age:")
+    print(manager.dictionary)
+
+    # Example use case: Remove a key-value pair
+    removed_value = manager.remove_key_value("course")
+
+    print("\nRemoved value:")
+    print(removed_value)
+
+    print("\nDictionary after removing course:")
+    print(manager.dictionary)
 
 
 if __name__ == "__main__":
